@@ -1,0 +1,13 @@
+type Scholar{
+    id:String!
+    name:String!
+    age:Int
+}
+
+type Query{
+    getAllScholars:[Scholar]!
+   }
+
+type Mutation {
+    createScholar(id:String!, name:String!, age:Int):Scholar!
+}
