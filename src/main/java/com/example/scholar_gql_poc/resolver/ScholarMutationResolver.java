@@ -38,17 +38,12 @@ public class ScholarMutationResolver implements GraphQLMutationResolver
         throw new NotFoundException("Scholar not found for given id "+id);
     }
 
-    public String  deleteScholar(String id)
+    public String  deleteScholar(String id) throws NotFoundException
     {
-        String str = "not found";
         if(scholarRepository.existsById(id)) {
             scholarRepository.deleteById(id);
             return "Successfully deleted scholar with id "+id;
         }
-        return  str;
+        throw new NotFoundException("Scholar not found for given id "+id);
     }
-
-
-
-
 }
