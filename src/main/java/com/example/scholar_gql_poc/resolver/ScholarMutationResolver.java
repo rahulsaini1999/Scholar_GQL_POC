@@ -15,6 +15,7 @@ public class ScholarMutationResolver implements GraphQLMutationResolver
     @Autowired
     private ScholarRepository scholarRepository;
 
+    // to create a scholar dtails in db
     public Scholar createScholar(String id,String name, int age){
             Scholar sc = new Scholar();
             sc.setId(id);
@@ -23,6 +24,8 @@ public class ScholarMutationResolver implements GraphQLMutationResolver
             scholarRepository.save(sc);
             return scholarRepository.findById(id).get();
     }
+
+    // to the update the scholar details
     public Scholar updateScholar(String id,String name, int age)throws
             NotFoundException
     {
@@ -38,6 +41,7 @@ public class ScholarMutationResolver implements GraphQLMutationResolver
         throw new NotFoundException("Scholar not found for given id "+id);
     }
 
+    // to delete the scholar details
     public String  deleteScholar(String id) throws NotFoundException
     {
         if(scholarRepository.existsById(id)) {
