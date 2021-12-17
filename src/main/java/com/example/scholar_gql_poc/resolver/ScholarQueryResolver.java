@@ -3,6 +3,9 @@ package com.example.scholar_gql_poc.resolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.example.scholar_gql_poc.model.Scholar;
 import com.example.scholar_gql_poc.repository.ScholarRepository;
+import graphql.relay.Connection;
+import graphql.relay.SimpleListConnection;
+import graphql.schema.DataFetchingEnvironment;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,4 +33,13 @@ public class ScholarQueryResolver implements GraphQLQueryResolver
     public long countScholar() {
         return scholarRepository.count();
     }
+
+
+    public Connection<Scholar> scholarForward
+        (int limit, int fixedSize, DataFetchingEnvironment env)
+    {
+        List<Scholar> scholar = scholarRepository.findAll();
+        return new SimpleListConnection<>(scholar).get(env);
+    }
+
 }
