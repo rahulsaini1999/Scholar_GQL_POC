@@ -8,8 +8,9 @@ type Query{
     getAllScholars:[Scholar]!
     getScholarById(id:String!):Scholar!
     countScholar:Long!
+    scholarForward(first: Int, after: String): ScholarConnection @connection(for: "Scholar")
+    scholarBackWard(last: Int, before: String): ScholarConnection @connection(for: "Scholar")
    }
-
 type Mutation {
     createScholar(id:String!, name:String!, age:Int):Scholar!
     updateScholar(id:String!,name:String!,age:Int): Scholar!
