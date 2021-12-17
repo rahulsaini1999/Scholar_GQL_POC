@@ -22,12 +22,11 @@ public class ScholarQueryResolver implements GraphQLQueryResolver
         return scholarRepository.findAll();
     }
 
-    public Scholar getScholarById(String id)
+    public Scholar getScholarById(String id) throws NotFoundException
     {
-        Scholar scholar = null;
         if(scholarRepository.existsById(id)) {
             return scholarRepository.findById(id).get();
         }
-        return scholar;
+        throw new NotFoundException("Scholar not found for given id "+id);
     }
 }
