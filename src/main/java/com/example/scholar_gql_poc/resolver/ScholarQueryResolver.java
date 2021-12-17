@@ -34,9 +34,7 @@ public class ScholarQueryResolver implements GraphQLQueryResolver
         return scholarRepository.count();
     }
 
-
-    public Connection<Scholar> scholarForward
-        (int limit, int fixedSize, DataFetchingEnvironment env)
+    public Connection<Scholar> scholarForward (int first, int after, DataFetchingEnvironment env)
     {
         List<Scholar> scholar = scholarRepository.findAll();
         return new SimpleListConnection<>(scholar).get(env);
