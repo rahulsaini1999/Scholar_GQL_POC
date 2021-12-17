@@ -6,6 +6,7 @@ type Scholar{
 
 type Query{
     getAllScholars:[Scholar]!
+    getScholarById(id:String!):Scholar!
    }
 
 type Mutation {
