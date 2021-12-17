@@ -26,4 +26,8 @@ public class ScholarQueryResolver implements GraphQLQueryResolver
         }
         throw new NotFoundException("Scholar not found for given id "+id);
     }
+
+    public long countScholar() {
+        return scholarRepository.count();
+    }
 }
