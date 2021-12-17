@@ -9,13 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScholarMutationResolver implements GraphQLMutationResolver
 {
-
-    private ScholarRepository scholarRepository;
-
     @Autowired
-    public ScholarMutationResolver(ScholarRepository scholarRepository) {
-        this.scholarRepository = scholarRepository;
-    }
+    private ScholarRepository scholarRepository;
 
     public Scholar createScholar(String id,String name, int age){
             Scholar sc = new Scholar();

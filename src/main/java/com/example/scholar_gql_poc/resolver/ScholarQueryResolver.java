@@ -12,12 +12,9 @@ import java.util.List;
 @Component
 public class ScholarQueryResolver implements GraphQLQueryResolver
 {
+    @Autowired
     private ScholarRepository scholarRepository;
 
-    @Autowired
-    public ScholarQueryResolver(ScholarRepository scholarRepository) {
-        this.scholarRepository = scholarRepository;
-    }
    public List<Scholar> getAllScholars() {
         return scholarRepository.findAll();
     }
