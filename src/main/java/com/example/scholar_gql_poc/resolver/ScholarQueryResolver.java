@@ -22,6 +22,7 @@ public class ScholarQueryResolver implements GraphQLQueryResolver
         return scholarRepository.findAll();
     }
 
+    // to fetch the scholrs detail for a single scholar
     public Scholar getScholarById(String id) throws NotFoundException
     {
         if(scholarRepository.existsById(id)) {
@@ -30,9 +31,11 @@ public class ScholarQueryResolver implements GraphQLQueryResolver
         throw new NotFoundException("Scholar not found for given id "+id);
     }
 
+    //to get the total scholar count
     public long countScholar() {
         return scholarRepository.count();
     }
+
 
     public Connection<Scholar> scholarForward (int first, int after, DataFetchingEnvironment env)
     {
