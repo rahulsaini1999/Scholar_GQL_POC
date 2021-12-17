@@ -25,4 +25,16 @@ public class ScholarMutationResolver implements GraphQLMutationResolver
             scholarRepository.save(sc);
             return scholarRepository.findById(id).get();
     }
+    public Scholar updateScholar(String id,String name, int age)
+    {
+        Optional<Scholar> scholar = scholarRepository.findById(id);
+        if (scholar.isPresent()) {
+            Scholar sc = scholar.get();
+            sc.setId(id);
+            sc.setName(name);
+            sc.setAge(age);
+            scholarRepository.save(sc);
+            return scholarRepository.findById(id).get();
+        }
+    }
 }
