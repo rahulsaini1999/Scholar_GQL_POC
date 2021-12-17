@@ -40,4 +40,9 @@ public class ScholarQueryResolver implements GraphQLQueryResolver
         return new SimpleListConnection<>(scholar).get(env);
     }
 
+    public Connection<Scholar> scholarBackWard(int last, String before, DataFetchingEnvironment env) {
+        List<Scholar> scholar = scholarRepository.findAll();
+        return new SimpleListConnection<>(scholar).get(env);
+    }
+
 }
